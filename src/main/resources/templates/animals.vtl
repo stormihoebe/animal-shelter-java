@@ -1,0 +1,9 @@
+<!-- animals.vtl -->
+
+<h1>Here are all our animals!</h1>
+<ul>
+  #foreach ($animal in $animals)
+  <li><a href="/animals/$animal.getId()">$animal.getName(), $animal.getType(), </a></li>
+  #end
+</ul>
+<!-- animals.vtl -->

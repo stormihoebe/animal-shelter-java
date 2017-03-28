@@ -1,0 +1,17 @@
+<h1>$animal.getName()</h1>
+<h2>$animal.getType(), $animal.getBreed()</h2>
+<h3>$animal.getSex()</h3>
+<p>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+  </p>
+</p>
+#if($animal.getOwnerId() == 0)
+  <h3>Available For Adoption Since: $animal.getDoa().substring(0,10)</h3>
+  <form class="" action="index.html" method="post">
+    <label for="name">Enter Owner Name to Adobt:</label>
+    <input id="name" name="name" type="text" class="form-control">
+    <button type="submit" name="button" class="btn btn-warning">Add Owner</button>
+  </form>
+#end
