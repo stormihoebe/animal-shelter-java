@@ -91,4 +91,12 @@ public class AnimalTest {
     assertEquals(1, testAnimal.getOwnerId());
   }
 
+  @Test
+  public void find_returnsAnimalWithSameId_SecondAnimal(){
+    Animal firstAnimal = new Animal("Spock", "male", "2017-03-25", "dog", "corgi");
+    firstAnimal.save();
+    Animal secondAnimal = new Animal("Bob", "male", "2016-03-25", "cat", "domestic shorthair");
+    secondAnimal.save();
+    assertEquals(secondAnimal, Animal.find(secondAnimal.getId()));
+  }
 }

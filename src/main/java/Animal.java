@@ -45,7 +45,9 @@ public class Animal {
   public int getOwnerId(){
     return owner_id;
   }
-
+  public int getId(){
+    return id;
+  }
   public void assignOwner(int ownerId){
     this.owner_id = ownerId;
     try(Connection con =  DB.sql2o.open()) {
@@ -78,6 +80,17 @@ public class Animal {
       return con.createQuery(sql).executeAndFetch(Animal.class);
     }
   }
+
+  public static Animal find(int id) {
+    try(Connection con = DB.sql2o.open()){
+      String sql = "SELECT * FROM animals where id=:id";
+      Animal animal = con.createQuery(sql)
+      .addParameter("id", id)
+      .executeAndFetchFirst(Animal.class);
+      return animal;
+    }
+  }
+
 
   @Override
   public boolean equals(Object otherAnimal) {
