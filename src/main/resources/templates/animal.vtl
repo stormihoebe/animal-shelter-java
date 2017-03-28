@@ -9,9 +9,15 @@
 </p>
 #if($animal.getOwnerId() == 0)
   <h3>Available For Adoption Since: $animal.getDoa().substring(0,10)</h3>
-  <form class="" action="index.html" method="post">
-    <label for="name">Enter Owner Name to Adobt:</label>
-    <input id="name" name="name" type="text" class="form-control">
-    <button type="submit" name="button" class="btn btn-warning">Add Owner</button>
+  <form class="" action="/animals/$animal.getId()/adopt" method="post">
+    <label for="ownerId">Select New Owner</label>
+      <select id='ownerId' name='ownerId' type='text'>
+        #foreach($customer in $customers)
+          <option value="$customer.getId()">$customer.getName()</option>
+        #end
+      </select>
+      <button type="submit" name="button">Add Owner</button>
   </form>
+  #else
+    <h1>This animal has been adopted!</h1>
 #end

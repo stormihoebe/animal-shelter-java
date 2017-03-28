@@ -45,6 +45,8 @@ public class App {
     Map<String, Object> model = new HashMap<String, Object>();
     Animal animal = Animal.find(Integer.parseInt(request.params(":id")));
     model.put("animal", animal);
+    Customer customer = Customer.find(Integer.parseInt(request.params(":id")));
+    model.put("customers", Customer.all());
     model.put("template", "templates/animal.vtl");
     return new ModelAndView(model, layout);
   }, new VelocityTemplateEngine());
@@ -65,6 +67,23 @@ public class App {
     String typePref = request.queryParams("typePref");
     Customer newCustomer = new Customer(name, phone, breedPref, typePref);
     newCustomer.save();
+    return new ModelAndView(model, layout);
+  }, new VelocityTemplateEngine());
+
+  post("/animals/:id/adopt",(request, response) -> {
+    Map<String, Object> model = new HashMap<String, Object>();
+    model.put("template", "templates/adopt-success.vtl");
+    Animal animal = Animal.find(Integer.parseInt(request.params(":id")));
+    model.put("animal", animal);
+    int ownerId = Integer.parseInt(request.queryParams("ownerId"));
+    animal.assignOwner(ownerId);
+    return new ModelAndView(model, layout);
+  }, new VelocityTemplateEngine());
+
+  get("/customers", (request, response) -> {
+    Map<String, Object> model = new HashMap<String, Object>();
+    model.put("customers", Customer.all());
+    model.put("template", "templates/customers.vtl");
     return new ModelAndView(model, layout);
   }, new VelocityTemplateEngine());
   }

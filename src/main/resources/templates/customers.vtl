@@ -1,0 +1,10 @@
+<!-- customers.vtl -->
+
+<h1>Here are all our customers!</h1>
+<ul>
+  #foreach ($customer in $customers)
+  <li>Customer name: $customer.getName(), Phone number: $customer.getPhone(), Animal preference: $customer.getTypePref(), Breed preference: $customer.getBreedPref() </li>
+  #end
+</ul>
+
+<!-- customers.vtl -->
